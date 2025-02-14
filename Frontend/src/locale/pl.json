@@ -1,0 +1,263 @@
+{
+  "translation": {
+    "auth": {
+      "tabs": {
+        "logIn": "Zaloguj się",
+        "signUp": "Zarejestruj się"
+      },
+      "error": "Błąd",
+      "error_default": "Coś poszło nie tak, spróbuj ponownie",
+      "error_empty": "Proszę wypełnić wszystkie pola",
+      "error_password": "Hasła nie pasują do siebie",
+      "error_password_short": "Hasło musi mieć co najmniej 8 znaków"
+    },
+    "loginPage": {
+      "title": "Logowanie",
+      "description": "Wprowadź swój adres e-mail poniżej, aby zalogować się do swojego konta",
+      "form": {
+        "email": "Adres Email",
+        "password": "Hasło"
+      },
+      "button": "Zaloguj się"
+    },
+    "signUpPage": {
+      "title": "Zarejestruj się",
+      "description": "Wprowadź swoje dane poniżej, aby założyć konto",
+      "form": {
+        "firstname": "Imię",
+        "surname": "Nazwisko",
+        "email": "Adres Email",
+        "password": "Hasło",
+        "repeatPassword": "Powtórz Hasło",
+        "phone": "Numer Telefonu",
+        "role": {
+          "role": "Rola",
+          "donator": "Darczyńca",
+          "volunteer": "Dobroczyńca",
+          "victim": "Zabójca"
+        }
+      },
+      "terms": "Akceptuję regulamin",
+      "button": "Zarejestruj się"
+    },
+    "accountPage": {
+      "title": "Konto",
+      "subtitle": "Edytuj swoje konto",
+      "form": {
+        "firstname": "Imię",
+        "surname": "Nazwisko",
+        "email": "Email",
+        "password": "Hasło",
+        "repeatPassword": "Powtórz Hasło",
+        "phone": "Numer Telefonu"
+      },
+      "alert": {
+        "title": "Aktualizacja konta",
+        "empty": "Proszę wypełnić wszystkie pola",
+        "error": "Wystąpił błąd podczas aktualizowania konta",
+        "password": "Hasła nie pasują do siebie",
+        "password_short": "Hasło musi mieć co najmniej 8 znaków",
+        "success": "Konto zaktualizowane pomyślnie"
+      },
+      "dataButton": "Zatwierdź zmiany",
+      "passwordButton": "Zmień hasło"
+    },
+    "sideNavBar": {
+      "donationTitle": "Darowizny",
+      "reportTitle": "Zgłoszenia",
+      "resourceTitle": "Zasoby",
+      "chatTitle": "Czat",
+      "manageTitle": "Zarządzaj",
+      "addTitle": "Dodaj"
+    },
+    "donation": {
+      "alert": {
+        "title": "Dodaj nową darowiznę",
+        "empty": "Proszę wypełnić wszystkie pola",
+        "error": "Wystąpił błąd podczas aktualizowania darowizny",
+        "success": "Darowizna zaktualizowana pomyślnie"
+      }
+    },
+    "donationsTable": {
+      "title": "Darowizny",
+      "subtitle": "Informacje o wszystkich darowiznach",
+      "donationID": "Numer darowizny",
+      "donatorName": "Darczyńca",
+      "resource": { 
+        "name": "Nazwa", 
+        "quantity": "Ilość" 
+      },
+      "status": "Status",
+      "donationDate": "Data przekazania",
+      "acceptDate": "Data akceptacji",
+      "openMenu": "Otwórz menu",
+      "copyDonationID": "Skopiuj numer darowizny",
+      "addDonationButton": "Dodaj darowiznę",
+      "filterPlaceholder": "Filtruj",
+      "popup": {
+        "title": "Dodaj nową darowiznę",
+        "subtitle": "Wypełnij wszystkie pola aby dodać darowiznę",
+        "donator": "Darczyńca",
+        "resources": "Zasoby",
+        "donationDate": "Data darowizny",
+        "acceptDate": "Data akceptacji",
+        "status": "Status",
+        "saveButton": "Dodaj darowiznę",
+        "quantity": "Ilość"
+      },
+      "nextButton": "Następna strona",
+      "previousButton": "Poprzednia strona",
+      "result": "Brak wyników",
+      "column": {
+        "label": "Kolumny",
+        "donator_name": "Darczyńca",
+        "resource_name": "Nazwa zasobu",
+        "resource_quantity": "Ilość zasobu",
+        "Status": "Status",
+        "donationDate": "Data przekazania",
+        "acceptDate": "Data akceptacji",
+        "quantity": "Ilość"
+      }
+    },
+    "usersNav": {
+      "settings": "Ustawienia",
+      "signOut": "Wyloguj się"
+    },
+    "index": {
+      "title": "Raport Działań",
+      "subtitle": "Przegląd działań i wgląd w mape",
+      "open_reps": "Otwarte Zgłoszenia",
+      "closed_reps": "Zamknięte Zgłoszenia",
+      "resources": "Dostępne Zasoby",
+      "res_category": "Kategoria",
+      "res_name": "Nazwa",
+      "res_amount": "Ilość",
+      "map": "Mapa",
+      "my_reports": "Moje Zgłoszenia",
+      "charity": "ID Organizacji",
+      "category": "Kategoria",
+      "date": "Data Zgłoszenia",
+      "status": "Status",
+      "statuses": {
+        "pending": "Oczekujące",
+        "accepted": "Zaakceptowane",
+        "completed": "Zakończone"
+      }
+    },
+    "add_report": {
+      "title": "Formularz zgłoszenia",
+      "subtitle": "Formularz do dodania zgłoszenia",
+      "category": "Kategoria",
+      "category_desc": "Wybierz kategorię zgłoszenia.",
+      "map": "Wybierz lokalizację na mapie",
+      "map_desc": "Kliknij na mapę, aby ustawić pinezke. Aktualne współrzędne: ",
+      "city": "Miasto",
+      "city_desc": "Podaj nazwę miasta, w którym potrzebna jest pomoc.",
+      "street": "Ulica",
+      "street_desc": "Podaj nazwę ulicy, na której potrzebna jest pomoc.",
+      "building_number": "Numer budynku",
+      "building_number_desc": "Podaj numer budynku, w którym potrzebna jest pomoc.",
+      "zip_code": "Kod pocztowy",
+      "zip_code_desc": "Podaj kod pocztowy obszaru, format XX-XXX.",
+      "button": "Wyślij zgłoszenie",
+      "enter_c": "Wpisz nazwę miasta",
+      "enter_s": "Wpisz nazwę ulicy",
+      "enter_bn": "Wpisz numer budynku",
+      "enter_zc": "Wpisz kod pocztowy"
+    },
+    "add_resources": {
+      "title": "Zatwierdzanie Zasobów",
+      "subtitle": "Wszystkie niezatwierdzone zasoby",
+      "unconfirmed": "Niepotwierdzone Zasoby",
+      "category": "Kategoria",
+      "name": "Nazwa",
+      "amount": "Ilość",
+      "status": "Status",
+      "button": "Potwierdź wybór",
+      "accept": "Akceptuj",
+      "reject": "Odrzuć"
+    },
+    "chat": {
+      "message": "Napisz swoją wiadomość...",
+      "button": "Wyślij wiadomość"
+    },
+    "manage_reports": {
+      "title": "Zarządzanie zgłoszeniami",
+      "subtitle": "Wszystkie zgłoszenia i zarządzanie nimi",
+      "organization": "ID Organizacji",
+      "victim": "ID Poszkodowanego",
+      "category": "Kategoria",
+      "date": "Data zgłoszenia",
+      "status": "Status",
+      "action": "Akcje",
+      "manage": "Zarządzaj",
+      "popup": {
+        "title": "Zarządzanie zgłoszeniem",
+        "organization": "ID Organizacji",
+        "person": "Osoba",
+        "category": "Kategoria",
+        "status": "Status",
+        "accept": "Akceptuj zgłoszenie",
+        "finish": "Zakończ zgłoszenie",
+        "close": "Zamknij"
+      },
+      "statuses": {
+        "pending": "Oczekujące",
+        "accepted": "Zaakceptowane",
+        "closed": "Zakończone"
+      },
+      "volunteers": "Wolontariusze",
+      "assign_volunteer": "Przydziel Wolontariusza",
+      "evaluate_volunteers": "Oceń Wolontariuszy",
+      "assign_volunteer_title": "Przydziel Wolontariusza do Zgłoszenia",
+      "evaluate_volunteer_title": "Oceń Wolontariuszy",
+      "assign": "Przydziel",
+      "submit_evaluation": "Zatwierdź Ocenę",
+      "evaluation_description": "Wprowadź opis oceny..."
+    },
+    "manage_resources": {
+      "title": "Zarządzanie zasobami",
+      "subtitle": "Wszystkie zasoby i zarządzanie nimi",
+      "category": "Kategoria",
+      "name": "Nazwa",
+      "description": "Opis",
+      "amount": "Ilość",
+      "action": "Akcje",
+      "assign": "Przydziel",
+      "popup": {
+        "title": "Przydziel zasób",
+        "select_report": "Wybierz zgłoszenie",
+        "select_placeholder": "Wybierz zgłoszenie...",
+        "quantity": "Ilość",
+        "assign": "Przydziel",
+        "cancel": "Zamknij"
+      }
+    },
+    "unauthorized": {
+      "title": "Twoje konto nie ma dostępu do tej strony",
+      "message": "Skontaktuj się z administratorem"
+    },
+    "reports": {
+      "generate": "Generuj Raport",
+      "select_options": "Wybierz opcje generowania",
+      "type": "Typ raportu",
+      "format": "Format raportu",
+      "select_type": "Wybierz typ",
+      "select_format": "Wybierz format",
+      "select_both": "Wybierz format i typ",
+      "generated": "Poprawnie wygenerowano raport",
+      "error": "Wystąpił błąd podczas generowania raportu",
+      "types": {
+        "volunteers": "Wolontariusze",
+        "victims": "Poszkodowani",
+        "resources": "Zasoby",
+        "donations": "Darowizny",
+        "donators": "Darczyńcy",
+        "charities": "Organizacje",
+        "authorities": "Władze",
+        "reports": "Zgłoszenia",
+        "evaluations": "Oceny"
+      }
+    }
+  }
+}

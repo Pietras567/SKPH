@@ -1,0 +1,263 @@
+{
+  "translation": {
+    "auth": {
+      "tabs": {
+        "logIn": "Log In",
+        "signUp": "Sign Up"
+      },
+      "error": "Error",
+      "error_default": "Something went wrong, please try again",
+      "error_empty": "Please fill all fields",
+      "error_password": "Passwords do not match",
+      "error_password_short": "Password must be at least 8 characters"
+    },
+    "loginPage": {
+      "title": "Login",
+      "description": "Enter your email below to login to your account",
+      "form": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "button": "Login"
+    },
+    "signUpPage": {
+      "title": "Sign Up",
+      "description": "Enter your information below to sign up",
+      "form": {
+        "firstname": "Firstname",
+        "surname": "Surname",
+        "email": "Email",
+        "password": "Password",
+        "repeatPassword": "Repeat Password",
+        "phone": "Phone number",
+        "role": {
+          "role": "Role",
+          "donator": "Donator",
+          "volunteer": "Volunteer",
+          "victim": "Victim"
+        }
+      },
+      "terms": "Accept terms and condition",
+      "button": "Sign Up"
+    },
+    "accountPage": {
+      "title": "Account",
+      "subtitle": "Edit your profile",
+      "form": {
+        "firstname": "Firstname",
+        "surname": "Surname",
+        "email": "Email",
+        "password": "Password",
+        "repeatPassword": "Repeat Password",
+        "phone": "Phone number"
+      },
+      "alert": {
+        "title": "Account Update",
+        "empty": "Please fill in all fields",
+        "error": "An error occurred while updating your account",
+        "password": "Passwords do not match",
+        "password_short": "Password must be at least 8 characters long",
+        "success": "Account updated successfully"
+      },
+      "dataButton": "Apply Changes",
+      "passwordButton": "Change Password"
+    },
+    "sideNavBar": {
+      "donationTitle": "Donations",
+      "reportTitle": "Reports",
+      "resourceTitle": "Resources",
+      "chatTitle": "Chat",
+      "manageTitle": "Manage",
+      "addTitle": "Add"
+    },
+    "donation": {
+      "alert": {
+        "title": "Add new donation",
+        "empty": "Please fill in all fields",
+        "error": "An error occurred while updating your donation",
+        "success": "Donation updated successfully"
+      }
+    },
+    "donationsTable": {
+      "title": "Donations",
+      "subtitle": "All donations and info about them",
+      "donationID": "Donation ID",
+      "donatorName": "Donator",
+      "resource": {
+        "name": "Name",
+        "quantity": "Quantity"
+      },
+      "status": "Status",
+      "donationDate": "Donate Date",
+      "acceptDate": "Accept Date",
+      "openMenu": "Open Menu",
+      "copyDonationID": "Copy Donations ID",
+      "addDonationButton": "Add new donation",
+      "filterPlaceholder": "Filter for donator...",
+      "popup": {
+        "title": "Add new donation",
+        "subtitle": "Fill all fields to add a donation",
+        "donator": "Donator",
+        "resources": "Resources",
+        "donationDate": "Donation Date",
+        "acceptDate": "Accept Date",
+        "status": "Status",
+        "saveButton": "Save changes",
+        "quantity": "Quantity"
+      },
+      "nextButton": "Next",
+      "previousButton": "Previous",
+      "result": "No results.",
+      "column": {
+        "label": "Columns",
+        "donator_name": "Donator",
+        "resource_name": "Resource name",
+        "resource_quantity": "Resource quantity",
+        "Status": "Status",
+        "donationDate": "Donate Date",
+        "acceptDate": "Accept Date",
+        "quantity": "Quantity"
+      }
+    },
+    "usersNav": {
+      "settings": "Settings",
+      "signOut": "Sign out"
+    },
+    "index": {
+      "title": "Action Overview",
+      "subtitle": "Overview of actions and map insight",
+      "open_reps": "Open Reports",
+      "closed_reps": "Closed Reports",
+      "resources": "Available Resources",
+      "res_category": "Category",
+      "res_name": "Name",
+      "res_amount": "Amount",
+      "map": "Map",
+      "my_reports": "My Reports",
+      "charity": "Charity ID",
+      "category": "Category",
+      "date": "Report Date",
+      "status": "Status",
+      "statuses": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "completed": "Completed"
+      }
+    },
+    "add_report": {
+      "title": "Report Form",
+      "subtitle": "Form for report addition",
+      "category": "Category",
+      "category_desc": "Choose report category.",
+      "map": "Choose location on the map",
+      "map_desc": "Click on the map to set a pin. Current coordinates: ",
+      "city": "City",
+      "city_desc": "Enter the name of the city where help is needed.",
+      "street": "Street",
+      "street_desc": "Enter the name of the street where help is needed.",
+      "building_number": "Building number",
+      "building_number_desc": "Enter the building number where help is needed.",
+      "zip_code": "Zip code",
+      "zip_code_desc": "Enter the area's zip code, XX-XXX format.",
+      "button": "Submit report",
+      "enter_c": "Enter city name",
+      "enter_s": "Enter street name",
+      "enter_bn": "Enter building number",
+      "enter_zc": "Enter zip code"
+    },
+    "add_resources": {
+      "title": "Resource Approval",
+      "subtitle": "All pending resources",
+      "unconfirmed": "Unconfirmed resources",
+      "category": "Category",
+      "name": "Name",
+      "amount": "Amount",
+      "status": "Status",
+      "button": "Confirm choices",
+      "accept": "Accept",
+      "reject": "Reject"
+    },
+    "chat": {
+      "message": "Write your message...",
+      "button": "Send message"
+    },
+    "manage_reports": {
+      "title": "Managing Reports",
+      "subtitle": "All reports and management of them",
+      "organization": "Organization ID",
+      "victim": "Victim ID",
+      "category": "Category",
+      "date": "Report date",
+      "status": "Status",
+      "action": "Action",
+      "manage": "Manage",
+      "popup": {
+        "title": "Managing Report",
+        "organization": "Organization ID",
+        "person": "Person",
+        "category": "Category",
+        "status": "Status",
+        "accept": "Accept report",
+        "finish": "Close report",
+        "close": "Close"
+      },
+      "statuses": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "closed": "Closed"
+      },
+      "volunteers": "Volunteers",
+      "assign_volunteer": "Assign Volunteer",
+      "evaluate_volunteers": "Evaluate Volunteers",
+      "assign_volunteer_title": "Assign Volunteer to Report",
+      "evaluate_volunteer_title": "Evaluate Volunteers",
+      "assign": "Assign",
+      "submit_evaluation": "Submit Evaluation",
+      "evaluation_description": "Enter evaluation description..."
+    },
+    "manage_resources": {
+      "title": "Managing Resources",
+      "subtitle": "All resources and management of them",
+      "category": "Category",
+      "name": "Name",
+      "description": "Description",
+      "amount": "Amount",
+      "action": "Action",
+      "assign": "Assign",
+      "popup": {
+        "title": "Assign Resource",
+        "select_report": "Select Report",
+        "select_placeholder": "Select a report...",
+        "quantity": "Quantity",
+        "assign": "Assign Resource",
+        "cancel": "Cancel"
+      }
+    },
+    "unauthorized": {
+      "title": "Your unauthorized for this page",
+      "message": "Please contact your administrator"
+    },
+    "reports": {
+      "generate": "Generate Review",
+      "select_options": "Select Review Options",
+      "type": "Review Type",
+      "format": "Review Format",
+      "select_type": "Select a review type",
+      "select_format": "Select a format",
+      "select_both": "Please select both type and format",
+      "generated": "Review generated successfully",
+      "error": "Error generating review",
+      "types": {
+        "volunteers": "Volunteers",
+        "victims": "Victims",
+        "resources": "Resources",
+        "donations": "Donations",
+        "donators": "Donators",
+        "charities": "Charities",
+        "authorities": "Authorities",
+        "reports": "Reports",
+        "evaluations": "Evaluations"
+      }
+    }
+  }
+}
