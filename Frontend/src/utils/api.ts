@@ -13,8 +13,8 @@ export const api = async <T>(
   }
 
   const response = await fetch("http://localhost:8080" + endpoint, {
-    //mode: 'cors',
-    //credentials: 'include',
+    mode: 'cors',
+    credentials: 'include',
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,

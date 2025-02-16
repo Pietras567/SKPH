@@ -77,6 +77,7 @@ export const Route = createFileRoute('/_auth/add_report')({
 })
 
 interface Location {
+  region: string;
   latitude: number;
   longitude: number;
   city: string;
@@ -120,6 +121,7 @@ function AddReport() {
       if (!user) throw new Error('User not authenticated');
       
       const locationData: Location = {
+        region: 'Łódzkie',
         latitude: values.coordinates.lat,
         longitude: values.coordinates.lng,
         city: values.city,
@@ -129,9 +131,10 @@ function AddReport() {
       };
 
       const locationResponse = await api<Location>(
-        "/api/locations/addLocation/",
+        "/api/locations",
         "POST",
-        locationData
+        locationData,
+        localStorage.getItem('auth.token')?.toString()
       );
 
       const reportData: Report = {
@@ -146,7 +149,8 @@ function AddReport() {
       await api<Report>(
         "/report/",
         "POST",
-        reportData
+        reportData,
+        localStorage.getItem('auth.token')?.toString()
       );
 
       console.log("Report and location submitted successfully");

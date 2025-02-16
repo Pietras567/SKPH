@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import java.time.LocalDate;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"Chat", "Classes","FileGeneration", "Security", "db"})
+@ComponentScan(basePackages = {"Chat", "Classes","FileGeneration", "Security", "db", "Map"})
 public class SkphApplication {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SkphApplication.class, args);
