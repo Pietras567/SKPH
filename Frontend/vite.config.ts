@@ -11,6 +11,9 @@ export default defineConfig({
     viteReact(),
     // ...,
   ],
+  define: {
+    global: 'window',
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

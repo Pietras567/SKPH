@@ -24,6 +24,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/login", "/api/signup").permitAll()
+                        .requestMatchers("/chatSystem/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(AbstractHttpConfigurer::disable) // Wyłączenie logowania podstawowego Spring

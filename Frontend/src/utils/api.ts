@@ -12,7 +12,9 @@ export const api = async <T>(
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  const response = await fetch(import.meta.env.VITE_BACKEND_URL + endpoint, {
+  const response = await fetch("http://localhost:8080" + endpoint, {
+    //mode: 'cors',
+    //credentials: 'include',
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,

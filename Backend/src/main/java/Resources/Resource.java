@@ -4,12 +4,14 @@ import Classes.Donation;
 import Classes.resourceType;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 import static Classes.resourceType.DONATION;
 import static Classes.resourceType.VOLUNTEER;
 
 @Entity
 @Table(name = "Resources")
-public class Resource {
+public class Resource implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

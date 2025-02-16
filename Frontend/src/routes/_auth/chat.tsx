@@ -7,8 +7,10 @@ import { useTranslation } from 'react-i18next'
 import { Client, IFrame } from '@stomp/stompjs'
 import { protectRoute } from '@/routes/_auth'
 import { useAuth } from "@/auth";
+import SockJS from 'sockjs-client';
 
 let isSub = false;
+let client: Client;
 
 interface Message {
   id: number
@@ -62,22 +64,28 @@ function ChatComponent() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + localStorage.getItem('auth.token'),
       },
     })
       .then((response) => {
         if (response.ok) {
-          return response.json(); // Assuming the response is JSON
+          if (response.headers.get('Content-Type')?.includes('application/json'))
+            return response.json(); // Assuming the response is JSON
+          else
+            return [];
         } else {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
       })
       .then((data) => {
+        setMessages([]);
+
         console.log("Chat history:", data);
         //wstawianie wiadomosci do chatu
         data.forEach((value) => {
           try {
             setMessages(prev => [...prev, {
-              id: Date.now(),
+              id: value.timestamp,
               senderName: value.senderName,
               content: value.message,
               timestamp: new Date(value.timestamp),
@@ -97,15 +105,20 @@ function ChatComponent() {
       });
 
 
-    const socket = new WebSocket('ws://localhost:8080/chatSystem');
-    //const socket = new SockJS('http://localhost:8080/chatSystem')
-    const client = new Client({
+    //const socket = new WebSocket('ws://localhost:8080/chatSystem');
+    const socket = new SockJS('http://localhost:8080/chatSystem');
+    client = new Client({
       webSocketFactory: () => socket,
       debug: (str) => console.log('[STOMP]', str),
       connectHeaders: {
-        userId: userId,
+        userId: userId!.toString(),
+        Authorization: 'Bearer ' + localStorage.getItem('auth.token'),
       },
     })
+
+    client.onWebSocketError = (error) => {
+      console.error('WebSocket Error:', error);
+    };
 
     client.onConnect = (frame) => {
       if (isSub)
@@ -119,7 +132,7 @@ function ChatComponent() {
         setMessages((prev) => [
           ...prev,
           {
-            id: Date.now(),
+            id: newMessage.date,
             senderName: newMessage.senderName,
             content: newMessage.message,
             timestamp: new Date(newMessage.date),
@@ -133,7 +146,7 @@ function ChatComponent() {
         setMessages((prev) => [
           ...prev,
           {
-            id: Date.now(),
+            id: newMessage.date,
             senderName: newMessage.senderName,
             content: newMessage.message,
             timestamp: new Date(newMessage.date),
@@ -165,7 +178,7 @@ function ChatComponent() {
     if (!values.message.trim() || !stompClient) return
 
     const chatMessage = {
-      senderId: parseInt(userId),
+      senderId: parseInt(userId!),
       message: values.message,
       chatId: 1,
     }
@@ -174,14 +187,14 @@ function ChatComponent() {
       method: "POST",
       body: JSON.stringify(chatMessage),
       headers: {
-        "Content-type": "application/json;"
+        "Content-type": "application/json;",
+        "Authorization": 'Bearer ' + localStorage.getItem('auth.token'),
       }
     }).then((response) => {
       if (response.ok) {
        console.log(`OK: ${response.status}`);
 
         const chatId = 1;
-        //const userId = 1;
 
         const url = `http://localhost:8080/chat/getChatHistory?chatId=${chatId}&userId=${userId}`;
 
@@ -189,11 +202,15 @@ function ChatComponent() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": 'Bearer ' + localStorage.getItem('auth.token'),
           },
         })
           .then((response) => {
             if (response.ok) {
-              return response.json(); // Assuming the response is JSON
+              if (response.headers.get('Content-Type')?.includes('application/json'))
+                return response.json(); // Assuming the response is JSON
+              else
+                return [];
             } else {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -205,7 +222,7 @@ function ChatComponent() {
             data.forEach((value) => {
               try {
                 setMessages(prev => [...prev, {
-                  id: Date.now(),
+                  id: value.timestamp,
                   senderName: value.senderName,
                   content: value.message,
                   timestamp: new Date(value.timestamp),

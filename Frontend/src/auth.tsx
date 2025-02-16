@@ -65,7 +65,7 @@ function getStoredID() {
 
 function setStoredID(id: string | null) {
   if (id) {
-    localStorage.setItem(LOCAL_STORAGE_KEY, id);
+    localStorage.setItem(LOCAL_STORAGE_ID, id);
   } else {
     localStorage.removeItem(LOCAL_STORAGE_ID);
   }
