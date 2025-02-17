@@ -43,10 +43,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     compileOnly 'javax.servlet:servlet-api:2.3'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework:spring-test'
     testImplementation 'org.mockito:mockito-core'
+    implementation 'javax.json.bind:javax.json.bind-api:1.0'
 }
 
 test {

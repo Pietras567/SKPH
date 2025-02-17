@@ -1,8 +1,8 @@
 import Classes.*;
 import SKPH.SkphApplication;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import db.CharityRepository;
+import db.LocationRepository;
 import db.ReportRepository;
 import db.UsersRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -13,17 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.result.StatusResultMatchers;
-
+import Report.ReportService;
+import Report.ReportController;
 import java.time.LocalDate;
-
 import java.util.List;
 
 @SpringBootTest(classes = SkphApplication.class)
@@ -36,37 +30,40 @@ public class IReportImplTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private IReportImpl impl;
+    private ReportService impl;
     private UsersRepository userRepo;
     private ReportRepository reportRepo;
     private CharityRepository charityRepo;
+    private LocationRepository locationRepo;
     private Charity charity;
     private Charity charity2;
     private User user;
     private User user2;
     private Report report;
     private Report report2;
-
+    private Location location;
 
     @BeforeEach
     public void setUp() {
-        impl = new IReportImpl();
+        impl = new ReportService();
         charity = new Charity("Caritas", "Pomoc dla bezdomnych");
         charity2 = new Charity("Charity", "Opis");
         user = new Victim("Jeremiasz", "Rożowy","haslo","jeremias@wp.pl","123", LocalDate.now(), charity);
         user2 = new Victim("Włodzimierz", "Biały","haslo","wlodzimierz@wp.pl", "000", LocalDate.now(), charity2);
         report = new Report((Victim) user, "Zaginął pies", charity);
         report2 = new Report((Victim) user2, "Zaginął kot", charity2);
+        location = new Location("Małopolska", "Kraków", "Armii krajowej 22", "120", "22-120", 92.111, 91.166);
         userRepo = new UsersRepository();
         reportRepo = new ReportRepository();
         charityRepo = new CharityRepository();
-
+        locationRepo = new LocationRepository();
     }
     @AfterEach
     void cleanUp() {
         reportRepo.getAll().forEach(report -> reportRepo.remove(report.getReport_id()));
         userRepo.getAll().forEach(user -> userRepo.remove(user.getUserId()));
         charityRepo.getAll().forEach(charity -> charityRepo.remove(charity.getCharity_id()));
+        locationRepo.getAll().forEach(location -> locationRepo.remove(location.getLocation_id()));
    }
 
 
@@ -153,11 +150,13 @@ public class IReportImplTest {
     public void AddReport() throws Exception {
         charityRepo.add(charity);
         userRepo.add(user);
+        locationRepo.add(location);
 
         Assertions.assertEquals(0, reportRepo.getAll().size());
 
+        ReportController.InitialReport initialReport = new ReportController.InitialReport(user.getUserId(), "Food", location.getLocation_id(), "pending", "2025-02-16");
 
-        ResponseEntity<Report> response = impl.addReport(report);
+        ResponseEntity<Report> response = impl.addReport(initialReport);
 
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Report report = response.getBody();
@@ -167,7 +166,6 @@ public class IReportImplTest {
         Assertions.assertNotNull(report);
         Assertions.assertEquals(reportDB.getCategory(), report.getCategory());
         Assertions.assertEquals(reportDB.getVictim().getFirstName(), report.getVictim().getFirstName());
-        Assertions.assertEquals(reportDB.getCharity().getCharity_description(), report.getCharity().getCharity_description());
     }
 
     @Test

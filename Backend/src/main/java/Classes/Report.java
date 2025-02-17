@@ -51,6 +51,14 @@ public class Report {
         this.charity = charity;
     }
 
+    public Report(Victim victim, String category, Location location, Date report_date, reportStatus status) {
+        this.victim = victim;
+        this.category = category;
+        this.location = location;
+        this.report_date = report_date;
+        this.status = status;
+    }
+
     public Report() {
     }
 

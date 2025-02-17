@@ -28,6 +28,7 @@ import { useTranslation } from "react-i18next";
 import { api } from "@/utils/api";
 import { protectRoute } from "@/routes/_auth";
 import { useAuth } from "@/auth";
+import { format } from "date-fns";
 
 // Walidacja formularza
 const formSchema = z.object({
@@ -87,12 +88,11 @@ interface Location {
 }
 
 interface Report {
-  victim: { userId: number };
-  charity: { charity_id: number };
+  victim: number ;
   category: string;
-  location: Location;
-  reportStatus: 'PENDING';
-  report_date: string;
+  location: number;
+  reportStatus: "pending";
+  reportDate: string;
 }
 
 function AddReport() {
@@ -117,7 +117,7 @@ function AddReport() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const currentDate = new Date().toISOString();
+      const currentDate = format(new Date, 'yyyy-MM-dd');
       if (!user) throw new Error('User not authenticated');
       
       const locationData: Location = {
@@ -137,23 +137,27 @@ function AddReport() {
         localStorage.getItem('auth.token')?.toString()
       );
 
+      // @ts-ignore
+      if (!locationResponse || !locationResponse.location_id) {
+        throw new Error('Did not get localisation data from server.');
+      }
+
       const reportData: Report = {
-        victim: { userId: parseInt(user?.id) },
-        charity: { charity_id: 1 },
+        victim: parseInt(user?.id),
         category: values.category,
-        location: locationResponse,
-        reportStatus: 'PENDING',
-        report_date: currentDate
+        // @ts-ignore
+        location: locationResponse.location_id,
+        reportStatus: "pending",
+        reportDate: currentDate,
       };
 
-      await api<Report>(
-        "/report/",
+      const response = await api<Report>(
+        "/report",
         "POST",
         reportData,
         localStorage.getItem('auth.token')?.toString()
       );
-
-      console.log("Report and location submitted successfully");
+      console.log("Response:", response);
       
     } catch (error) {
       console.error("Failed to submit report or location:", error);

@@ -37,6 +37,8 @@ function IndexRoute() {
         const response = await api<Report[]>(
           `/report/victim/${victimId}`,
           'GET',
+          undefined,
+          localStorage.getItem('auth.token')?.toString()
         )
         setReports(response)
       } catch (err) {
@@ -87,7 +89,7 @@ function IndexRoute() {
                 {reports.map((report) => (
                   <TableRow key={report.report_id}>
                     <TableCell>{report.report_id}</TableCell>
-                    <TableCell>{report.charity.charity_id}</TableCell>
+                    <TableCell>{report.charity ? report.charity.charity_name : t('Unassigned foundation')}</TableCell>
                     <TableCell>{report.category}</TableCell>
                     <TableCell>
                       {new Date(report.report_date).toLocaleDateString()}

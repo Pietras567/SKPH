@@ -1,29 +1,30 @@
-package Classes;
+package Report;
 
+import Classes.Report;
+import Classes.Victim;
+import Classes.reportStatus;
 import Resources.Resource;
 import Resources.Volunteer;
+import db.LocationRepository;
 import db.ReportRepository;
+import db.UsersRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/report")
-public class IReportImpl implements IReport, IVictim {
-
+@Service
+public class ReportService {
     private ReportRepository reportRepository = new ReportRepository();
 
-    @Override
     public ResponseEntity<List<Report>> getAllReports() {
         List<Report> reportList = reportRepository.getAll();
         return new ResponseEntity<>(reportList, HttpStatus.OK);
     }
 
-    @Override
     public ResponseEntity<Report> getReport(int id) {
         Report report = reportRepository.get(id);
 
@@ -34,7 +35,6 @@ public class IReportImpl implements IReport, IVictim {
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @Override
     public ResponseEntity<Report> updateReport(int id, Report updatedReport) {
         Report report = reportRepository.get(id);
 
@@ -82,7 +82,6 @@ public class IReportImpl implements IReport, IVictim {
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @Override
     public ResponseEntity<Report> deleteReport(int id) {
         Report report = reportRepository.get(id);
 
@@ -94,7 +93,6 @@ public class IReportImpl implements IReport, IVictim {
         return new ResponseEntity<>(report, HttpStatus.OK);
     }
 
-    @Override
     public ResponseEntity<List<Report>> getReportByOrganizationId(int id) {
         List<Report> reportList = reportRepository.getAll();
         List<Report> reportListUser = new ArrayList<>();
@@ -106,7 +104,6 @@ public class IReportImpl implements IReport, IVictim {
         return new ResponseEntity<>(reportListUser, HttpStatus.OK);
     }
 
-    @Override
     public ResponseEntity<List<Report>> getReportByVictimId(int id) {
         List<Report> reportList = reportRepository.getAll();
         List<Report> reportListUser = new ArrayList<>();
@@ -119,9 +116,15 @@ public class IReportImpl implements IReport, IVictim {
 
     }
 
-    @Override
-    public ResponseEntity<Report> addReport(Report report) {
-        reportRepository.add(report);
-        return new ResponseEntity<>(report, HttpStatus.CREATED);
+    public ResponseEntity<Report> addReport(ReportController.InitialReport report) {
+        UsersRepository usersRepository = new UsersRepository();
+        LocationRepository locationRepository = new LocationRepository();
+        Report temp = new Report((Victim) usersRepository.get(report.getVictim()),
+                                report.getCategory(),
+                                locationRepository.get(report.getLocation()),
+                                Date.valueOf(report.getReportDate()),
+                                reportStatus.valueOf(report.getReportStatus()));
+        reportRepository.add(temp);
+        return new ResponseEntity<>(temp, HttpStatus.CREATED);
     }
 }

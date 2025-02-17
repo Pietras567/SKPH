@@ -14,25 +14,25 @@ public class LocationController implements ILocation {
     @Autowired
     private LocationService locationService;
 
-    //public LocationController(LocationService locationService) {
-    //    this.locationService = locationService;
-    //}
-
+    @Override
     @PostMapping("/locations")
     public ResponseEntity<Location> addLocation(@RequestBody Location location) {
         return locationService.addLocation(location);
     }
 
+    @Override
     @GetMapping("/locations/{id}")
     public ResponseEntity<Location> getLocationById(@PathVariable int id) {
         return locationService.getLocationById(id);
     }
 
+    @Override
     @GetMapping("/locations")
     public ResponseEntity<List<Location>> getAllLocations() {
         return  locationService.getAllLocations();
     }
 
+    @Override
     @DeleteMapping("/locations/{id}")
     public ResponseEntity<Void> deleteLocation(@PathVariable int id) {
         return locationService.deleteLocation(id);
