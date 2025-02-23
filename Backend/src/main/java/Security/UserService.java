@@ -1,9 +1,11 @@
 package Security;
 
 import Classes.*;
+import Mail.MailManager;
 import Resources.Resource;
 import Resources.Volunteer;
 import db.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +22,9 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final JwtConfig jwtConfig = new JwtConfig();
     private final JwtUtils jwtUtils = new JwtUtils(jwtConfig);
+
+    @Autowired
+    private MailManager mailManager;
 
     public boolean register(RegisterRequest request) {
 
